@@ -23,10 +23,10 @@ contract BigBangTheory is ERC721URIStorage, VRFConsumerBase {
         string occupation;
         string lover;
         string university;
-        uint128 senseOfHumour;
-        uint128 extrovert;
-        uint128 socialSkills;
-        uint128 sensitive;
+        uint256 senseOfHumour;
+        uint256 extrovert;
+        uint256 socialSkills;
+        uint256 sensitive;
         uint256 iq;
     }
     string[4] characterName;
@@ -83,6 +83,9 @@ contract BigBangTheory is ERC721URIStorage, VRFConsumerBase {
         uint256 newItemId = _tokenIds.current();
         for (uint256 i = 0; i <= characters.length; i++) {
             characterDetails[requestId].name = characterName[i];
+             characterDetails[requestId].occupation=characterOccupation[i];
+              characterDetails[requestId].lover=characterLovers[i];
+               characterDetails[requestId].university=characterUniversities[i];
         }
         uint256 senseOfHumour = uint256(
             keccak256(abi.encode(randomNumber, 1))
@@ -95,6 +98,19 @@ contract BigBangTheory is ERC721URIStorage, VRFConsumerBase {
             100;
         uint256 iq = uint256(keccak256(abi.encode(randomNumber, 5))) % 100;
         iq=iq+100;
+           BBTCharacterAttributes memory character = BBTCharacterAttributes(
+      characterDetails[requestId].name,
+      characterDetails[requestId].occupation,
+      characterDetails[requestId].lover,
+      characterDetails[requestId].university,
+      senseOfHumour,
+      extrovert,
+      SocialSkills,
+      sensitive,
+      iq
+    );
+    characters.push(character);
+
 
         _safeMint(senderAddress[requestId], newItemId);
         _tokenIds.increment();

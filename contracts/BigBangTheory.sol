@@ -29,17 +29,16 @@ contract BigBangTheory is ERC721URIStorage, VRFConsumerBase {
         uint128 sensitive;
         uint256 iq;
     }
-
+    string[4] characterName;
+    string[4] characterLovers;
+    string[4] characterUniversities;
+    string[4] characterOccupation;
     BBTCharacterAttributes[] public characters;
     mapping(bytes32 => address) senderAddress;
 
     mapping(bytes32 => BBTCharacterAttributes) characterDetails;
 
     constructor(
-        string[4] memory characterName,
-        string[4] memory characterLovers,
-        string[4] memory characterUniversities,
-        string[4] memory characterOccupation,
         address _VRFCoordinator,
         address _LinkToken,
         bytes32 _keyhash
@@ -82,6 +81,20 @@ contract BigBangTheory is ERC721URIStorage, VRFConsumerBase {
         override
     {
         uint256 newItemId = _tokenIds.current();
+        for (uint256 i = 0; i <= characters.length; i++) {
+            characterDetails[requestId].name = characterName[i];
+        }
+        uint256 senseOfHumour = uint256(
+            keccak256(abi.encode(randomNumber, 1))
+        ) % 100;
+        uint256 extrovert = uint256(keccak256(abi.encode(randomNumber, 2))) %
+            100;
+        uint256 SocialSkills = uint256(keccak256(abi.encode(randomNumber, 3))) %
+            100;
+        uint256 sensitive = uint256(keccak256(abi.encode(randomNumber, 4))) %
+            100;
+        uint256 iq = uint256(keccak256(abi.encode(randomNumber, 5))) % 100;
+        iq=iq+100;
 
         _safeMint(senderAddress[requestId], newItemId);
         _tokenIds.increment();

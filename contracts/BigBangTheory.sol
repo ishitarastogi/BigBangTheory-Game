@@ -31,7 +31,7 @@ contract BigBangTheory is ERC721URIStorage, VRFConsumerBase {
     }
 
     BBTCharacterAttributes[] public characters;
-    mapping(bytes32 => address) requestToSender;
+    mapping(bytes32 => address) senderAddress;
 
     mapping(bytes32 => BBTCharacterAttributes) characterDetails;
 
@@ -72,7 +72,7 @@ contract BigBangTheory is ERC721URIStorage, VRFConsumerBase {
         require(LINK.balanceOf(address(this)) >= fee, "Not enough LINK ");
         bytes32 requestId = requestRandomness(keyHash, fee);
 
-        requestToSender[requestId] = msg.sender;
+        senderAddress[requestId] = msg.sender;
 
         return requestId;
     }
@@ -83,7 +83,7 @@ contract BigBangTheory is ERC721URIStorage, VRFConsumerBase {
     {
         uint256 newItemId = _tokenIds.current();
 
-        _safeMint(requestToSender[requestId], newItemId);
+        _safeMint(senderAddress[requestId], newItemId);
         _tokenIds.increment();
     }
 }

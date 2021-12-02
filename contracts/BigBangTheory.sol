@@ -83,9 +83,9 @@ contract BigBangTheory is ERC721URIStorage, VRFConsumerBase {
         uint256 newItemId = _tokenIds.current();
         for (uint256 i = 0; i <= characters.length; i++) {
             characterDetails[requestId].name = characterName[i];
-             characterDetails[requestId].occupation=characterOccupation[i];
-              characterDetails[requestId].lover=characterLovers[i];
-               characterDetails[requestId].university=characterUniversities[i];
+            characterDetails[requestId].occupation = characterOccupation[i];
+            characterDetails[requestId].lover = characterLovers[i];
+            characterDetails[requestId].university = characterUniversities[i];
         }
         uint256 senseOfHumour = uint256(
             keccak256(abi.encode(randomNumber, 1))
@@ -97,22 +97,28 @@ contract BigBangTheory is ERC721URIStorage, VRFConsumerBase {
         uint256 sensitive = uint256(keccak256(abi.encode(randomNumber, 4))) %
             100;
         uint256 iq = uint256(keccak256(abi.encode(randomNumber, 5))) % 100;
-        iq=iq+100;
-           BBTCharacterAttributes memory character = BBTCharacterAttributes(
-      characterDetails[requestId].name,
-      characterDetails[requestId].occupation,
-      characterDetails[requestId].lover,
-      characterDetails[requestId].university,
-      senseOfHumour,
-      extrovert,
-      SocialSkills,
-      sensitive,
-      iq
-    );
-    characters.push(character);
-
+        iq = iq + 100;
+        BBTCharacterAttributes memory character = BBTCharacterAttributes(
+            characterDetails[requestId].name,
+            characterDetails[requestId].occupation,
+            characterDetails[requestId].lover,
+            characterDetails[requestId].university,
+            senseOfHumour,
+            extrovert,
+            SocialSkills,
+            sensitive,
+            iq
+        );
+        characterDetails[requestId]=character;
+        characters.push(character);
 
         _safeMint(senderAddress[requestId], newItemId);
         _tokenIds.increment();
+    }
+    function guessTheIQ(string memory _name, uint _iq) public {
+       // characterDetails[].iq;
+        BBTCharacterAttributes memory character;
+        //character.name;
+        characterName[0]=character.name;
     }
 }

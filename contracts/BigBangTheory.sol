@@ -22,7 +22,7 @@ contract BigBangTheory is ERC721URIStorage, VRFConsumerBase {
     address public LinkToken;
 
     IERC20 public token;
-    uint256 public bbtTokensPerEth = 1000;
+    uint256 public bbtTokensPerEth = 100;
     uint256 private characterIQ;
 
     event tokenPurchase(address buyer, uint256 amountOfTokens);

@@ -14,3 +14,7 @@ ipfs://bafyreiebg35ysk4xfqh7dqca5s4f5pihi7vw6mcetlh7mdqld6d6ydgw4q/metadata.json
 ipfs://bafyreif3s3ud45pfwzyhxoeg7mh54jeni25kizodeic77j2lufozeomqo4/metadata.json
 ipfs://bafyreie7smimyrprkchdsi4etyuj3xg6vax3p6nutpcqirt54p2vkqg7yi/metadata.json
 
+# First Challenge
+
+https://bafyreid6pmekm6eceht4r42nsn7uet6f7cnwx5rron22ohe53boe3jenq4.ipfs.dweb.link/metadata.json
+ipfs://bafybeibq2nko5bxnllw6v2keeqn6xh32ry6otb7ngpfz5oe4af6wmjmi7u/NFT.jpeg-900x510.jpg

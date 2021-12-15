@@ -3,9 +3,12 @@ It is chainlink vrf based game which generates verifiable random attributes of B
 
 # Contracts are deployed and verified on polygon Mumbai testnet
 
-BT Token:
+BBT Token:
+
 https://mumbai.polygonscan.com/address/0x6e94ed80522cd51dff7171e1dd963bcdc5518319#code 
+
 BBT Game:
+
 https://mumbai.polygonscan.com/address/0x0b3d0e9631dc451e09bcad3f74c493c332c36149#code 
 
 ![Untitled (11)](https://user-images.githubusercontent.com/46647968/144590384-24b0bb2a-931c-4d7e-b086-e93cf49cbdfa.jpg)
